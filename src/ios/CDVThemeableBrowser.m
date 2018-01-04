@@ -1336,7 +1336,7 @@
 
 - (void) rePositionViews {
     CGFloat toolbarHeight = [self getFloatFromDict:_browserOptions.toolbar withKey:kThemeableBrowserPropHeight withDefault:TOOLBAR_DEF_HEIGHT];
-    CGFloat statusBarHeight = [self getStatusBarOffset];
+    CGFloat statusBarHeight = IsAtLeastiOSVersion(@"11.0") ? [self getStatusBarOffset] : 0.0;
     CGFloat webviewOffset = _browserOptions.fullscreen ? 0.0 : toolbarHeight + statusBarHeight;
 
     if ([_browserOptions.toolbarposition isEqualToString:kThemeableBrowserToolbarBarPositionTop]) {
